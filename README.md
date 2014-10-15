@@ -14,4 +14,6 @@ Features:
 *Lecture Notes
 *Homework/Assigments
 *Exams
-*Solutions
+*Solutions 
+*implement save system (serialzation)
+*------------>save on server(seperate file for every player)==>when load, ask for name and push the right file
