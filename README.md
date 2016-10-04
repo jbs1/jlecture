@@ -15,7 +15,7 @@ you need to simply execute
 
 you will need to install `lftp` for that
 ```
-sudo apt-get update && sudo apt-get install lftp
+sudo apt-get update; sudo apt-get install lftp
 ```
 
 
