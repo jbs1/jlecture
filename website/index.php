@@ -39,7 +39,7 @@
                         <a href="#">Video Materials</a>
                     </li>
                     <li>
-                        <a href="#">Contact Us</a>
+                        <a href="contact_us.html">Contact Us</a>
                     </li>
                 </ul>
             </div>
