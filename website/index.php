@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="campusnet.jacobs-university.de/">Campusnet</a>
+                        <a href="https://campusnet.jacobs-university.de/">Campusnet</a>
                     </li>
                     <li>
                         <a href="https://cantaloupe.eecs.jacobs-university.de/login.php?f=djExOA">jgrader</a>
