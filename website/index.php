@@ -24,16 +24,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Home</a>
+                <a class="navbar-brand" href="http://jlecture.user.jacobs-university.de/#">Home</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Campusnet</a>
+                        <a href="campusnet.jacobs-university.de/">Campusnet</a>
                     </li>
                     <li>
-                        <a href="#">jgrader</a>
+                        <a href="https://cantaloupe.eecs.jacobs-university.de/login.php?f=djExOA">jgrader</a>
                     </li>
                     <li>
                         <a href="#">Video Materials</a>
