@@ -43,9 +43,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="section-heading">New Uploads:</h1>
-                    <p class="lead section-lead">newest videoes:</p>
-                    <p class="section-paragraph">COOL INFORMATION COMES HERE SOON.</p>
+                    <h1 class="section-heading">STUFF</h1>
+                    <p class="lead section-lead">STUFFS</p>
+                    <p class="section-paragraph">STUFFING</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -54,54 +54,6 @@
     </section>
 
 
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="section-heading">Lectures</h1>
-                    <p class="lead section-lead">Pick your lecture</p>
-                    <p class="section-paragraph">cool information comes here later.</p>
-                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Lecture ID</th>
-                                <th>Lecture Name</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Lecture ID</th>
-                                <th>Lecture Name</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>100000</td>
-                                <td>Data Bases and Web Applications</td>
-                                <td>Prof. Peter Baumann</td>
-
-                            </tr>
-                            <tr>
-                                <td>100001</td>
-                                <td>General Computer Science</td>
-                                <td>Prof. Michael Kohlhase</td>
-
-                            </tr>
-                            <tr>
-                                <td>100002</td>
-                                <td>Formal Languages and Logic</td>
-                                <td>Prof. Herbert Jaeger</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Fixed Height Image Aside -->
     <!-- Image backgrounds are set within the full-width-pics.css file. -->
