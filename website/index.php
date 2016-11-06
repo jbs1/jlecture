@@ -37,37 +37,7 @@
 <body>
 
     <?php include $_SERVER['DOCUMENT_ROOT'].'/inc/navbar.php'; ?>
-        <!-- Content Section -->
-    <?php
-        include $_SERVER['DOCUMENT_ROOT'].'/cfg/main.cfg';
 
-        // Create connection
-        $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
-        if (!$conn) {
-            die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
-        }
-
-        $sql = "SELECT lecture.lid AS 'ID', lecture.name AS 'Lecture', person.name AS 'Instructor'
-                FROM (lecture_has_instructor
-                    INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
-                    INNER JOIN person ON (instructor.person_pid = person.pid)
-                    INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-             // output data of each row
-             while($row = $result->fetch_assoc()) {
-                 echo "<br> lecture.lid: "
-                 . $row["ID"]. " - lecture.name: "
-                 . $row["Lecture"]. " " 
-                 . $row["Instructor"]
-                 . "<br>";
-             }
-        } else {
-             echo "0 results";
-        }
-
-        $conn->close();
-    ?>    
     <!-- Content Section -->
     <section>
         <div class="container">
@@ -116,12 +86,13 @@
                                 if (!$conn) {
                                     die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
                                 }
-
+                                // query for retrieving data from the server
                                 $sql = "SELECT lecture.lid AS 'ID', lecture.name AS 'Lecture', person.name AS 'Instructor'
                                         FROM (lecture_has_instructor
                                             INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
                                             INNER JOIN person ON (instructor.person_pid = person.pid)
                                             INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
+                                // send the query throguh the connection and store the result
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                      // output data of each row
