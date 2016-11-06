@@ -37,15 +37,64 @@
 <body>
 
     <?php include $_SERVER['DOCUMENT_ROOT'].'/inc/navbar.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/cfg/main.cfg'; ?>
 
     <!-- Content Section -->
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                <?php
 
-                    WRITE STUFFS HERE
+                    $link = mysqli_connect($db_host, $db_username, $db_password, $db_name);
 
+                    if (!$link) {
+                        die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
+                    } else {
+                        echo "MySQL-Connection established: " . mysqli_get_host_info($link)."\n";
+                    }
+
+                    mysqli_set_charset($link, "utf8");
+                    echo "dassjabjjajndakanjkajsak";
+                    echo $_POST["name"];
+                    echo $_POST["birthdate"];
+
+                        //add person entity
+                        if (!($stmt = $link->prepare("INSERT INTO `person`(`pid`,`name`,`birthdate`) VALUES (NULL,?,?)"))) {
+                            echo "Prepare failed: (" . $link->errno . ") " . $link->error;
+                        }
+
+                        if (!$stmt->bind_param("ss", $_POST["name"],$_POST["birthdate"])) {
+                            echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+                        }
+
+                        if (!$stmt->execute()) {
+                            echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                        } else {
+                            $stmt->close();
+
+                            //add instructor entity
+                            $query = "SELECT * FROM `person`";
+                            if ($result = $mysqli->query($query)) {
+                                while ($row = $result->fetch_row()) {
+                                    printf("%s (%s,%s)\n", $row[0], $row[1], $row[2]);
+                                }
+                                /* free result set */
+                               $result->close();
+                            }
+
+
+
+                            echo "Succssfully added entry '".$_POST["name"]."'";
+                        }
+
+
+
+
+
+
+                    mysqli_close($link);
+                ?>
                 </div>
             </div>
             <!-- /.row -->
