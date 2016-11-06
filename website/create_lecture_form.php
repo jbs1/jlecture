@@ -43,9 +43,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="section-heading">STUFF</h1>
-                    <p class="lead section-lead">STUFFS</p>
-                    <p class="section-paragraph">STUFFING</p>
+
+                    <h1>Create Lecture!</h1>
+
+                    <form id="create_lecture" action="/forms/create_lecture_callback.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
                 </div>
             </div>
             <!-- /.row -->

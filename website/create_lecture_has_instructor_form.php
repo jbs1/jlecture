@@ -37,15 +37,94 @@
 <body>
 
     <?php include $_SERVER['DOCUMENT_ROOT'].'/inc/navbar.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/cfg/main.cfg'; ?>
 
     <!-- Content Section -->
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="section-heading">STUFF</h1>
-                    <p class="lead section-lead">STUFFS</p>
-                    <p class="section-paragraph">STUFFING</p>
+
+
+                    <h1>Assign lecture to instructor!</h1>
+
+                    <form id="create_instructor" action="/forms/create_lecture_has_instructor_callback.php" method="POST">
+                        <div class="form-group">
+                            <label for="instructor">Select the instructor</label>
+                            <select class="form-control" id="instructor" name="instructor">
+
+
+                                <?php
+
+                                $link = mysqli_connect($db_host, $db_username, $db_password, $db_name);
+
+                                if (!$link) {
+                                    die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
+                                } else {
+                                // echo "MySQL-Connection established: " . mysqli_get_host_info($link)."\n";
+
+
+                                    mysqli_set_charset($link, "utf8");
+
+                                    $query = "SELECT * FROM `instructor`";
+                                    if ($result = $link->query($query)) {
+                                        while ($row = $result->fetch_row()) {
+
+                                            $query2 = "SELECT * FROM `person` WHERE `pid`='{$row[1]}'";
+                                            if ($result2 = $link->query($query2)){
+                                                $row2 = $result2->fetch_row();
+                                                printf("<option value=\"".$row[0]."\">%s ", $row2[1]);
+                                            }
+
+                                            printf("(%s)</option>\n", $row[0]);
+                                        }
+                                        /* free result set */
+                                        $result->close();
+                                    }
+                                }
+                                mysqli_close($link);
+                                ?>
+
+
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="lecture">Select the lecture</label>
+                            <select class="form-control" id="lecture" name="lecture">
+
+
+                                <?php
+
+                                $link = mysqli_connect($db_host, $db_username, $db_password, $db_name);
+
+                                if (!$link) {
+                                    die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
+                                } else {
+                                // echo "MySQL-Connection established: " . mysqli_get_host_info($link)."\n";
+
+
+                                    mysqli_set_charset($link, "utf8");
+
+                                    $query = "SELECT * FROM `lecture`";
+                                    if ($result = $link->query($query)) {
+                                        while ($row = $result->fetch_row()) {
+                                            printf("<option value=\"".$row[0]."\">%s (%s)</option>\n", $row[1],$row[0]);
+                                        }
+                                        /* free result set */
+                                        $result->close();
+                                    }
+                                }
+                                mysqli_close($link);
+                                ?>
+
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+
                 </div>
             </div>
             <!-- /.row -->

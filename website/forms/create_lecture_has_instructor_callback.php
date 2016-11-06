@@ -53,15 +53,22 @@
                     } else {
                         // echo "MySQL-Connection established: " . mysqli_get_host_info($link)."\n";
 
-
                         mysqli_set_charset($link, "utf8");
 
                         //add person entity
-                        if (!($stmt = $link->prepare("INSERT INTO `person`(`pid`,`name`,`birthdate`) VALUES (NULL,?,?)"))) {
+                        if (!($stmt = $link->prepare("INSERT INTO `lecture_has_instructor`(`lecture_lid`,`instructor_iid`, `instructor_person_pid`) VALUES (?,?,?)"))) {
                             echo "Prepare failed: (" . $link->errno . ") " . $link->error;
                         }
 
-                        if (!$stmt->bind_param("ss", $_POST["name"],$_POST["birthdate"])) {
+
+                        $query = "SELECT * FROM `instructor` WHERE `iid`='{$_POST["instructor"]}'";
+                        if (!$result = $link->query($query)) {
+                            echo "pid fetch faild!";
+                        }else{
+                            $pid=mysqli_fetch_object($result)->person_pid;
+                        }
+
+                        if (!$stmt->bind_param("iii", $_POST["lecture"], $_POST["instructor"], $pid)) {
                             echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
                         }
 
@@ -69,39 +76,10 @@
                             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
                         } else {
                             $stmt->close();
-                            //add instructor entity
-                            $query = "SELECT * FROM `person` WHERE `name`='{$_POST['name']}'";
-                            if ($result = $link->query($query)) {
-                                $row = $result->fetch_row();
-                                $row[0];
 
-                                if (!($stmt = $link->prepare("INSERT INTO `instructor`(`iid`,`person_pid`) VALUES (NULL,?)"))) {
-                                    echo "Prepare failed: (" . $link->errno . ") " . $link->error;
-                                }
-
-                                if (!$stmt->bind_param("i", $row[0])) {
-                                    echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-                                }
-
-                                if (!$stmt->execute()) {
-                                    echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-                                } else {
-                                    echo "Succssfully added instructor '".$_POST["name"]."'";
-                                }
-                                $stmt->close();
-                                /* free result set */
-                               $result->close();
+                                    echo "Succssfully added lecture.";
                             }
-
-
-
-
                         }
-
-                    }
-
-
-
 
                     mysqli_close($link);
                 ?>
