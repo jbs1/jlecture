@@ -9,19 +9,80 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+</head>
+
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="https://campusnet.jacobs-university.de/">Campusnet</a>
+                    </li>
+                    <li>
+                        <a href="https://cantaloupe.eecs.jacobs-university.de/login.php?f=djExOA">jgrader</a>
+                    </li>
+                    <li>
+                        <a href="#">Video Materials</a>
+                    </li>
+                    <li>
+                        <a href="contact_us.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <!-- Full Width Image Header with Logo -->
+    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+    <header class="image-bg-fluid-height">
+        <img class="img-responsive img-center" src=""alt="">
+            </header>
+    <br>
+    <br>
+    <br>
+
+<!-- Content Section -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="section-heading">New Uploads:</h1>
+                <p class="lead section-lead">newest videoes:</p>
+                <p class="section-paragraph">COOL INFORMATION COMES HERE SOON.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
 
 
     <title>jlecture</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Bootstrap CSS for table -->
-    <link href="/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="" rel="stylesheet">
-
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,14 +91,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-
-</head>
-
-<body>
-
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/inc/navbar.php'; ?>
-        <!-- Content Section -->
+    <!-- Content Section -->
     <?php
         include $_SERVER['DOCUMENT_ROOT'].'/cfg/main.cfg';
 
@@ -46,20 +100,26 @@
         if (!$conn) {
             die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
         }
+        // Check connection
+        if ($conn->connect_error) {
+             die("Connection failed here: " . $conn->connect_error);
+        } 
 
-        $sql = "SELECT lecture.lid AS 'ID', lecture.name AS 'Lecture', person.name AS 'Instructor'
+        $sql = "SELECT lecture.lid, lecture.name, person.name
                 FROM (lecture_has_instructor
                     INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
                     INNER JOIN person ON (instructor.person_pid = person.pid)
                     INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
         $result = $conn->query($sql);
+
         if ($result->num_rows > 0) {
              // output data of each row
              while($row = $result->fetch_assoc()) {
                  echo "<br> lecture.lid: "
-                 . $row["ID"]. " - lecture.name: "
-                 . $row["Lecture"]. " " 
-                 . $row["Instructor"]
+                 . $row["lecture.lid"]
+                 . " - lecture.name: "
+                 . $row["lecture.name"]
+                 . " " . $row["person.name"]
                  . "<br>";
              }
         } else {
@@ -67,24 +127,7 @@
         }
 
         $conn->close();
-    ?>    
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="section-heading">New Uploads:</h1>
-                    <p class="lead section-lead">newest videoes:</p>
-                    <p class="section-paragraph">COOL INFORMATION COMES HERE SOON.</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
-
-
-    <!-- Content Section -->
+    ?>  
     <section>
         <div class="container">
             <div class="row">
@@ -108,36 +151,24 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            <?php
-                                include $_SERVER['DOCUMENT_ROOT'].'/cfg/main.cfg';
+                            <tr>
+                                <td>100000</td>
+                                <td>Data Bases and Web Applications</td>
+                                <td>Prof. Peter Baumann</td>
 
-                                // Create connection
-                                $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
-                                if (!$conn) {
-                                    die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
-                                }
+                            </tr>
+                            <tr>
+                                <td>100001</td>
+                                <td>General Computer Science</td>
+                                <td>Prof. Michael Kohlhase</td>
 
-                                $sql = "SELECT lecture.lid AS 'ID', lecture.name AS 'Lecture', person.name AS 'Instructor'
-                                        FROM (lecture_has_instructor
-                                            INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
-                                            INNER JOIN person ON (instructor.person_pid = person.pid)
-                                            INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                     // output data of each row
-                                     while($row = $result->fetch_assoc()) {
-                                         echo "<tr>"
-                                         ."<td>".$row["ID"]."</td>"
-                                         ."<td>".$row["Lecture"]."</td>"
-                                         ."<td>".$row["Instructor"]."</td>"
-                                         ."</tr>";
-                                     }
-                                } else {
-                                     echo "0 results";
-                                }
+                            </tr>
+                            <tr>
+                                <td>100002</td>
+                                <td>Formal Languages and Logic</td>
+                                <td>Prof. Herbert Jaeger</td>
+                            </tr>
 
-                                $conn->close();
-                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -163,13 +194,13 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="/js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
     <script>
     $(document).ready(function() {
     $('#example').DataTable();} );
     </script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 </body>
