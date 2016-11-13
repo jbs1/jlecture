@@ -28,43 +28,43 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
 
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/inc/navbar.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/inc/navbar.php'; ?>
 
 
 
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="section-heading">Lectures</h1>
-                    <p class="lead section-lead">Pick your lecture</p>
-                    <p class="section-paragraph">cool information comes here later.</p>
-                    <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-                        <thead>                 
-                            <tr>
-                                <th>Lecture ID</th>
-                                <th>Lecture Name</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Lecture ID</th>
-                                <th>Lecture Name</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <?php
+        <!-- Content Section -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="section-heading">Lectures</h1>
+                        <p class="lead section-lead">Pick your lecture</p>
+                        <p class="section-paragraph">cool information comes here later.</p>
+                        <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                            <thead>                 
+                                <tr>
+                                    <th>Lecture ID</th>
+                                    <th>Lecture Name</th>
+                                    <th>Instructor</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Lecture ID</th>
+                                    <th>Lecture Name</th>
+                                    <th>Instructor</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <?php
                                 include $_SERVER['DOCUMENT_ROOT'].'/cfg/main.cfg';
 
                                 // Create connection
@@ -74,41 +74,41 @@
                                 }
                                 // query for retrieving data from the server
                                 $sql = "SELECT lecture.lid AS 'ID', lecture.name AS 'Lecture', person.name AS 'Instructor', instructor.iid AS 'Instructor_ID'
-                                        FROM (lecture_has_instructor
-                                            INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
-                                            INNER JOIN person ON (instructor.person_pid = person.pid)
-                                            INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
+                                FROM (lecture_has_instructor
+                                INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
+                                INNER JOIN person ON (instructor.person_pid = person.pid)
+                                INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
                                 // send the query throguh the connection and store the result
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                      // output data of each row
-                                     while($row = $result->fetch_assoc()) {
-                                         echo "<tr>"
+                                   while($row = $result->fetch_assoc()) {
+                                       echo "<tr>"
 
-                                         ."<td class=\"table-data\" data-href='/content/view_lecture.php?id=".$row["ID"]."'>".$row["ID"]."</td>"
-                                         ."<td class=\"table-data\" data-href='/content/view_lecture.php?id=".$row["ID"]."'>".$row["Lecture"]."</td>"
-                                         ."<td class=\"table-data\" data-href='/content/view_instructor.php?id=".$row["Instructor_ID"]."'>".$row["Instructor"]."</td>"
-                                         ."</tr>";
-                                     }
-                                } else {
-                                     echo "0 results";
-                                }
+                                       ."<td class=\"table-data\" data-href='/content/view_lecture.php?id=".$row["ID"]."'>".$row["ID"]."</td>"
+                                       ."<td class=\"table-data\" data-href='/content/view_lecture.php?id=".$row["ID"]."'>".$row["Lecture"]."</td>"
+                                       ."<td class=\"table-data\" data-href='/content/view_instructor.php?id=".$row["Instructor_ID"]."'>".$row["Instructor"]."</td>"
+                                       ."</tr>";
+                                   }
+                               } else {
+                                   echo "0 results";
+                               }
 
-                                $conn->close();
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
+                               $conn->close();
+                               ?>
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+           </div>
+       </section>
 
-    <!-- Fixed Height Image Aside -->
-    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+       <!-- Fixed Height Image Aside -->
+       <!-- Image backgrounds are set within the full-width-pics.css file. -->
 
 
-    <!-- Footer -->
-    <footer>
+       <!-- Footer -->
+       <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -123,20 +123,20 @@
     <!-- jQuery -->
     <script src="/js/jquery.js"></script>
     <script>
-    $(document).ready(function() {
-    $('#example').DataTable();} );
-    </script>
+        $(document).ready(function() {
+            $('#example').DataTable();} );
+        </script>
 
-    <script type="text/javascript">
-        $(document).ready(function($) {
-            $(".table-data").click(function() {
-                window.document.location = $(this).data("href");
+        <script type="text/javascript">
+            $(document).ready(function($) {
+                $(".table-data").click(function() {
+                    window.document.location = $(this).data("href");
+                });
             });
-        });
-    </script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-</body>
-</html>
+        </script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    </body>
+    </html>

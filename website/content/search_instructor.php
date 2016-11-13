@@ -48,7 +48,7 @@
                         <h1 class="section-heading">Instructors</h1>
                         <p class="lead section-lead">Pick your Instructor</p>
                         <p class="section-paragraph">cool information comes here later.</p>
-                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>Instructor ID</th>
@@ -81,7 +81,7 @@
                                 if ($result->num_rows > 0) {
                                      // output data of each row
                                    while($row = $result->fetch_assoc()) {
-                                       echo "<tr class=\"table-row\" data-href='/content/view_instructor.php?id=".$row["ID"].">"
+                                       echo "<tr class=\"table-row\" data-href='/content/view_instructor.php?id=".$row["ID"]."'>"
                                        ."<td>".$row["id"]."</td>"
                                        ."<td>".$row["name"]."</td>"
                                        ."<td>".$row["birthdate"]."</td>"

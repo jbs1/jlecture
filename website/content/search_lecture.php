@@ -48,7 +48,7 @@
                         <h1 class="section-heading">Instructors</h1>
                         <p class="lead section-lead">Pick your Instructor</p>
                         <p class="section-paragraph">cool information comes here later.</p>
-                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>Lecture ID</th>
@@ -77,31 +77,31 @@
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                      // output data of each row
-                                   while($row = $result->fetch_assoc()) {
-                                       echo "<tr class=\"table-row\" data-href='/content/view_lecture.php?id=".$row["ID"].">"
-                                       ."<td>".$row["id"]."</td>"
-                                       ."<td>".$row["name"]."</td>"
-                                       ."</tr>";
-                                   }
-                               } else {
-                                   echo "0 results";
-                               }
+                                 while($row = $result->fetch_assoc()) {
+                                    echo "<tr class=\"table-row\" data-href='/content/view_lecture.php?id=".$row["ID"]."'>"
+                                     ."<td>".$row["id"]."</td>"
+                                     ."<td>".$row["name"]."</td>"
+                                     ."</tr>";
+                                 }
+                             } else {
+                                 echo "0 results";
+                             }
 
-                               $conn->close();
-                               ?>
-                           </tbody>
-                       </table>
-                   </div>
-               </div>
-           </div>
-       </section>
+                             $conn->close();
+                             ?>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </section>
 
-       <!-- Fixed Height Image Aside -->
-       <!-- Image backgrounds are set within the full-width-pics.css file. -->
+     <!-- Fixed Height Image Aside -->
+     <!-- Image backgrounds are set within the full-width-pics.css file. -->
 
 
-       <!-- Footer -->
-       <footer>
+     <!-- Footer -->
+     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -119,14 +119,14 @@
     <script>
         $(document).ready(function() {
             $('#example').DataTable();} );
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function($) {
-            $(".table-row").click(function() {
-                window.document.location = $(this).data("href");
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function($) {
+                $(".table-row").click(function() {
+                    window.document.location = $(this).data("href");
+                });
             });
-        });
-    </script>
+        </script>
         <!-- Bootstrap Core JavaScript -->
         <script src="/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
