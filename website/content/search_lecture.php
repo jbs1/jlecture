@@ -78,7 +78,7 @@
                                 if ($result->num_rows > 0) {
                                      // output data of each row
                                    while($row = $result->fetch_assoc()) {
-                                       echo "<tr>"
+                                       echo "<tr class=\"table-row\" data-href='/content/view_lecture.php?id=".$row["ID"].">"
                                        ."<td>".$row["id"]."</td>"
                                        ."<td>".$row["name"]."</td>"
                                        ."</tr>";
@@ -115,10 +115,18 @@
 
     <!-- jQuery -->
     <script src="/js/jquery.js"></script>
+
     <script>
         $(document).ready(function() {
             $('#example').DataTable();} );
-        </script>
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $(".table-row").click(function() {
+                window.document.location = $(this).data("href");
+            });
+        });
+    </script>
         <!-- Bootstrap Core JavaScript -->
         <script src="/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>

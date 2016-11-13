@@ -53,9 +53,10 @@
                                 }
                                 // query for retrieving data from the server
                                 $sql = 
-                                "SELECT lecture.lid AS 'id', lecture.name AS 'name'
-                                FROM lecture
-                                WHERE lecture.lid = ".$_GET["id"];
+                                "SELECT instructor.iid AS 'id', person.name AS 'name', person.birthdate AS 'birthdate'
+                                FROM (instructor
+                                INNER JOIN person ON (instructor.person_pid = person.pid))
+                                WHERE instructor.iid = ".$_GET["id"];
                                 // send the query throguh the connection and store the result
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
@@ -64,6 +65,7 @@
                                      // output data of each row
                                        echo "<h1>".$row["name"]."</h1>";
                                        echo "ID:".$row["id"]."<br/>"; 
+                                       echo "Birthdate:".$row["birthdate"]."<br/>"; 
                                } else {
                                    echo "0 results";
                                }
