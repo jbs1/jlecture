@@ -25,6 +25,16 @@
                       </ul>
                     </li>
 
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Search for <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/content/search_instructor.php">Instructor</a></li>
+                        <li><a href="/content/search_lecture_instructor.php">Lecture List</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/content/search_lecture.php">Lecture</a></li>
+                      </ul>
+                    </li>
+
                     <li>
                         <a href="#">Video Materials</a>
                     </li>
