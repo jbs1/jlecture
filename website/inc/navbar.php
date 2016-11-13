@@ -30,7 +30,6 @@
                       <ul class="dropdown-menu">
                         <li><a href="/content/search_instructor.php">Instructor</a></li>
                         <li><a href="/content/search_lecture_instructor.php">Lecture List</a></li>
-                        <li role="separator" class="divider"></li>
                         <li><a href="/content/search_lecture.php">Lecture</a></li>
                       </ul>
                     </li>

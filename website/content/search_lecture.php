@@ -51,16 +51,14 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Instructor ID</th>
-                                    <th>Instructor Name</th>
-                                    <th>Instructor Birthday</th>
+                                    <th>Lecture ID</th>
+                                    <th>Lecture Name</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Instructor ID</th>
-                                    <th>Instructor Name</th>
-                                    <th>Instructor Birthday</th>
+                                    <th>Lecture ID</th>
+                                    <th>Lecture Name</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -73,9 +71,8 @@
                                     die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
                                 }
                                 // query for retrieving data from the server
-                                $sql = "SELECT instructor.iid AS 'id', person.name AS 'name', person.birthdate AS 'birthdate'
-                                FROM (instructor
-                                INNER JOIN person ON (instructor.person_pid = person.pid))";
+                                $sql = "SELECT lecture.lid AS 'id', lecture.name AS 'name'
+                                FROM lecture";
                                 // send the query throguh the connection and store the result
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
@@ -84,7 +81,6 @@
                                        echo "<tr>"
                                        ."<td>".$row["id"]."</td>"
                                        ."<td>".$row["name"]."</td>"
-                                       ."<td>".$row["birthdate"]."</td>"
                                        ."</tr>";
                                    }
                                } else {
