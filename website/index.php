@@ -43,7 +43,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="section-heading">New Uploads MORE TESTING HOOKS:</h1>
+                    <h1 class="section-heading">New Uploads:</h1>
                     <p class="lead section-lead">newest videoes:</p>
                     <p class="section-paragraph">COOL INFORMATION COMES HERE SOON.</p>
                 </div>
@@ -51,69 +51,6 @@
             <!-- /.row -->
         </div>
         <!-- /.container -->
-    </section>
-
-
-    <!-- Content Section -->
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="section-heading">Lectures</h1>
-                    <p class="lead section-lead">Pick your lecture</p>
-                    <p class="section-paragraph">cool information comes here later.</p>
-                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Lecture ID</th>
-                                <th>Lecture Name</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Lecture ID</th>
-                                <th>Lecture Name</th>
-                                <th>Instructor</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <?php
-                                include $_SERVER['DOCUMENT_ROOT'].'/cfg/main.cfg';
-
-                                // Create connection
-                                $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
-                                if (!$conn) {
-                                    die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
-                                }
-                                // query for retrieving data from the server
-                                $sql = "SELECT lecture.lid AS 'ID', lecture.name AS 'Lecture', person.name AS 'Instructor'
-                                        FROM (lecture_has_instructor
-                                            INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
-                                            INNER JOIN person ON (instructor.person_pid = person.pid)
-                                            INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
-                                // send the query throguh the connection and store the result
-                                $result = $conn->query($sql);
-                                if ($result->num_rows > 0) {
-                                     // output data of each row
-                                     while($row = $result->fetch_assoc()) {
-                                         echo "<tr>"
-                                         ."<td>".$row["ID"]."</td>"
-                                         ."<td>".$row["Lecture"]."</td>"
-                                         ."<td>".$row["Instructor"]."</td>"
-                                         ."</tr>";
-                                     }
-                                } else {
-                                     echo "0 results";
-                                }
-
-                                $conn->close();
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Fixed Height Image Aside -->

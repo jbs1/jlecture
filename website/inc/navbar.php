@@ -18,10 +18,10 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Forms <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="/create_instructor_form.php">Create Instructor</a></li>
-                        <li><a href="/create_lecture_form.php">Create Lecture</a></li>
+                        <li><a href="/content/create_instructor_form.php">Create Instructor</a></li>
+                        <li><a href="/content/create_lecture_form.php">Create Lecture</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/create_lecture_has_instructor_form.php">Assign Instructor to Lecture</a></li>
+                        <li><a href="/content/create_lecture_has_instructor_form.php">Assign Instructor to Lecture</a></li>
                       </ul>
                     </li>
 
@@ -37,7 +37,7 @@
                     </li>
 
                     <li>
-                        <a href="/contact_us.html">Contact Us</a>
+                        <a href="/content/contact_us.html">Contact Us</a>
                     </li>
                 </ul>
             </div>
