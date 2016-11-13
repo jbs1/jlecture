@@ -48,7 +48,7 @@
                     <h1 class="section-heading">Lectures</h1>
                     <p class="lead section-lead">Pick your lecture</p>
                     <p class="section-paragraph">cool information comes here later.</p>
-                    <table id="t_lec_ins" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>Lecture ID</th>

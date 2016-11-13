@@ -45,10 +45,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="section-heading">Lectures</h1>
-                    <p class="lead section-lead">Pick your lecture</p>
+                    <h1 class="section-heading">Instructors</h1>
+                    <p class="lead section-lead">Pick your Instructor</p>
                     <p class="section-paragraph">cool information comes here later.</p>
-                    <table id="t_lec_ins" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>Instructor ID</th>
@@ -73,20 +73,18 @@
                                     die("MySQL-Connection error (#" . mysqli_connect_errno() . "): " . mysqli_connect_error());
                                 }
                                 // query for retrieving data from the server
-                                $sql = "SELECT lecture.lid AS 'ID', lecture.name AS 'Lecture', person.name AS 'Instructor'
-                                        FROM (lecture_has_instructor
-                                            INNER JOIN instructor ON (lecture_has_instructor.instructor_iid = instructor.iid)
-                                            INNER JOIN person ON (instructor.person_pid = person.pid)
-                                            INNER JOIN lecture ON (lecture_has_instructor.lecture_lid = lecture.lid))";
+                                $sql = "SELECT instructor.iid AS 'id', person.name AS 'name', person.birthdate AS 'birthdate'
+FROM (instructor
+    INNER JOIN person ON (instructor.person_pid = person.pid))";
                                 // send the query throguh the connection and store the result
                                 $result = $conn->query($sql);
                                 if ($result->num_rows > 0) {
                                      // output data of each row
                                      while($row = $result->fetch_assoc()) {
                                          echo "<tr>"
-                                         ."<td>".$row["ID"]."</td>"
-                                         ."<td>".$row["Lecture"]."</td>"
-                                         ."<td>".$row["Instructor"]."</td>"
+                                         ."<td>".$row["id"]."</td>"
+                                         ."<td>".$row["name"]."</td>"
+                                         ."<td>".$row["birthdate"]."</td>"
                                          ."</tr>";
                                      }
                                 } else {
