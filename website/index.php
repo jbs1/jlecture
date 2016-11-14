@@ -43,7 +43,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="section-heading">New Uploads: last test</h1>
+                    <h1 class="section-heading">New Uploads:</h1>
                     <p class="lead section-lead">newest videos:</p>
                     <p class="section-paragraph">COOL INFORMATION COMES HERE SOON.</p>
                 </div>
