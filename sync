@@ -3,6 +3,6 @@
 lftp -c "set ftp:list-options -a;
 open jschulz-2:GbTVnf82@userweb.jacobs-university.de;
 set ftp:ssl-allow no;
-lcd ./website;
+lcd $1/website;
 cd /htdocs;
 mirror --reverse --delete --use-cache --verbose --allow-chown --allow-suid --no-umask --parallel=2 --exclude-glob .svn"
