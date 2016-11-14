@@ -45,8 +45,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="section-heading">Instructors</h1>
-                        <p class="lead section-lead">Pick your Instructor</p>
+                        <h1 class="section-heading">Lectures</h1>
+                        <p class="lead section-lead">Pick your Lecture</p>
                         <p class="section-paragraph">cool information comes here later.</p>
                         <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                             <thead>
