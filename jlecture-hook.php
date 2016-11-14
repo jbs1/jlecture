@@ -34,13 +34,13 @@ if ( $_POST['payload'] ) {
     shell_exec("cd {$LOCAL_REPO} && {$GIT_PREFIX} pull");
     shell_exec("{$LOCAL_REPO}/sync {$LOCAL_REPO}");
     file_put_contents("{$LOCAL_ROOT}/push-log","Last pushed:".date("H:i:s d.m.Y"));
-    die("done " . mktime());
+    die("done at ".date("H:i:s d.m.Y"));
   } else {
     // If the repo does not exist, then clone it into the parent directory
     shell_exec("cd {$LOCAL_ROOT} && {$GIT_PREFIX} clone {$REMOTE_REPO}");
     shell_exec("{$LOCAL_REPO}/sync {$LOCAL_REPO}");
     file_put_contents("{$LOCAL_ROOT}/push-log","Last pushed:".date("H:i:s d.m.Y"));
-    die("done " . mktime());
+    die("done at ".date("H:i:s d.m.Y"));
   }
 } else {
     echo "Wrong payload!";
