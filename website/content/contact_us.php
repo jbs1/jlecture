@@ -109,10 +109,10 @@
                     <title>jlecture</title>
                     
                     <!-- Bootstrap Core CSS -->
-                    <link href="css/bootstrap.min.css" rel="stylesheet">
+                    <link href="/css/bootstrap.min.css" rel="stylesheet">
                         
                         <!-- Bootstrap CSS for table -->
-                        <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+                        <link href="/css/dataTables.bootstrap.min.css" rel="stylesheet">
                             
                             <!-- Custom CSS -->
                             <link href="" rel="stylesheet">
@@ -138,9 +138,9 @@
                     </footer>
                     
                     <!-- jQuery -->
-                    <script src="js/jquery.js"></script>
+                    <script src="/js/jquery.js"></script>
 
                     <!-- Bootstrap Core JavaScript -->
-                    <script src="js/bootstrap.min.js"></script>
+                    <script src="/js/bootstrap.min.js"></script>
     </body>
 </html>
