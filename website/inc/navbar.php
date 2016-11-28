@@ -46,7 +46,7 @@
                     </li>
 
                     <li>
-                        <a href="/content/contact_us.html">Contact Us</a>
+                        <a href="/content/contact_us.php">Contact Us</a>
                     </li>
                 </ul>
             </div>
