@@ -1,7 +1,7 @@
 jlecture
 ========
 
-Lecture Database for Jacobs  
+Lecture Database for Jacobs as project for the DBWS course
 
 url:  
 http://jlecture.user.jacobs-university.de/  
@@ -34,15 +34,3 @@ now every website change should work automatically
 
 **NOTE:** for private repo make sure, you have a ssh key on the instance with pull rights for this repo
 
-## features
-Sorted by Courses/ID:  
-Courses can have different versions of different years  
-
-
-Features:
-* Video Lecture
-* Slides
-* Lecture Notes
-* Homework/Assigments
-* Exams
-* Solutions 
